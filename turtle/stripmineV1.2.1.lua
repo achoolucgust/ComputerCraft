@@ -10,7 +10,7 @@ function split(inputstr, sep)
 end
 function isSlot(slot,name)
     details = turtle.getItemDetail(slot)
-    if split(details["name"]:lower(),":")[2] == name.lower() then
+    if details and split(details["name"]:lower(),":")[2] == name.lower() then
         return true
     end
     return false
