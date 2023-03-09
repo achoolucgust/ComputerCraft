@@ -9,15 +9,16 @@ function split(inputstr, sep)
         return t
 end
 function isSlot(slot,name)
-    details = turtle.getItemDetail(slot)
-    if details and split(details["name"]:lower(),":")[2] == name.lower() then
+    turtle.select(slot)
+    details = turtle.getItemDetail()
+    if details and details["name"]:lower() == name:lower() then
         return true
     end
     return false
 end
 function unclog(slot,min,max)
     for i = min,max do
-        if isSlot(i,"air") then
+        if isSlot(i,"minecraft:air") then
             turtle.select(slot)
             turtle.transferTo(i)
             return true
@@ -37,16 +38,16 @@ while true do
     local maxFuel = turtle.getFuelLimit()
     local maxSlots = 16
     local fuelSlot = 1
-    local fuelPercentage = math.floor((fuel/maxFuel)*10)/10
-
+    local fuelPercentage = math.floor((fuel/maxFuel))
+    print(fuel,"out of",maxFuel)
     print(fuelPercentage.."% fuel left.")
-    if fuelPercentage < 2 then
+    if fuel < 2 then
         print("refueling because "..fuelPercentage.."% left")
         turtle.select(1)
         turtle.refuel()
         print("REFUELED!")
     end
-    if not isSlot(fuelSlot,"coal") then
+    if not isSlot(fuelSlot,"minecraft:coal") then
         unclog(1,2,maxSlots)
     end
     if counter == 1 then
