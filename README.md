@@ -4,9 +4,9 @@
 ### Well then, Use this!
 #### It's either you copy straight from this repository, or copy and modify!
 
-Just copy, and CTRL + V this line of code into your MC Computer.
+Just copy, and CTRL + V this line of code into a file.
 ```lua
-return http.get("https://raw.githubusercontent.com/achoolucgust/ComputerCraft/main/main.lua")
+return load(http.get("https://raw.githubusercontent.com/achoolucgust/ComputerCraft/main/main.lua"))()
 ```
 Now you can require that file!
 ```lua
