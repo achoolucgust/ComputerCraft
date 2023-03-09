@@ -43,9 +43,6 @@ while true do
         refuel(1,16)
         print("REFUELED!")
     end
-    if not (isSlot(fuelSlot,"minecraft:coal") or isSlot(fuelSlot,"minecraft:air")) then
-        unclog(1,2,maxSlots)
-    end
     if counter == 1 then
         noerror(turtle.dig())
     elseif counter == 2 then
