@@ -1,6 +1,6 @@
 function isSlot(slot,name)
     details = textutils.serialise(turtle.getItemDetail(slot))
-    if details.name.lower().split(":")[2] == name.lower() then
+    if details["name"].lower().split(":")[2] == name.lower() then
         return true
     end
     return false
@@ -31,6 +31,7 @@ while true do
     term.write(fuelPercentage.." fuel left.")
     if fuelPercentage < 2 then
         term.write("refueling because "..fuelPercentage.." left")
+        turtle.select(1)
         turtle.refuel()
         term.write("REFUELED!")
     end
