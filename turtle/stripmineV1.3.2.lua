@@ -41,13 +41,13 @@ while true do
     local fuelPercentage = math.floor((fuel/maxFuel))
     print(fuel,"out of",maxFuel)
     print(fuelPercentage.."% fuel left.")
-    if fuel < 2 then
+    if fuel < 25 then
         print("refueling because "..fuelPercentage.."% left")
         turtle.select(1)
         turtle.refuel()
         print("REFUELED!")
     end
-    if not isSlot(fuelSlot,"minecraft:coal") then
+    if not (isSlot(fuelSlot,"minecraft:coal") or isSlot(fuelSlot,"minecraft:air")) then
         unclog(1,2,maxSlots)
     end
     if counter == 1 then
