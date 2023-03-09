@@ -16,13 +16,10 @@ function isSlot(slot,name)
     end
     return false
 end
-function unclog(slot,min,max)
+function refuel(min,max)
     for i = min,max do
-        if isSlot(i,"minecraft:air") then
-            turtle.select(slot)
-            turtle.transferTo(i)
-            return true
-        end
+        turtle.select(i)
+        noerror(turtle.refuel)
     end
     return false
 end
@@ -43,8 +40,7 @@ while true do
     print(fuelPercentage.."% fuel left.")
     if fuel < 25 then
         print("refueling because "..fuelPercentage.."% left")
-        turtle.select(1)
-        turtle.refuel()
+        refuel(1,16)
         print("REFUELED!")
     end
     if not (isSlot(fuelSlot,"minecraft:coal") or isSlot(fuelSlot,"minecraft:air")) then
