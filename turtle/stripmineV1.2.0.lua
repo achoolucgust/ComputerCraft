@@ -1,6 +1,16 @@
+function split(inputstr, sep)
+        if sep == nil then
+                sep = "%s"
+        end
+        local t={}
+        for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
+                table.insert(t, str)
+        end
+        return t
+end
 function isSlot(slot,name)
-    details = textutils.serialise(turtle.getItemDetail(slot))
-    if details["name"].lower().split(":")[2] == name.lower() then
+    details = turtle.getItemDetail(slot)
+    if split(details["name"]:lower(),":")[2] == name.lower() then
         return true
     end
     return false
@@ -28,12 +38,12 @@ while true do
     local fuelSlot = 1
     local fuelPercentage = math.floor((fuel/maxFuel)*10)/10
 
-    term.write(fuelPercentage.." fuel left.")
+    print(fuelPercentage.."% fuel left.")
     if fuelPercentage < 2 then
-        term.write("refueling because "..fuelPercentage.." left")
+        print("refueling because "..fuelPercentage.."% left")
         turtle.select(1)
         turtle.refuel()
-        term.write("REFUELED!")
+        print("REFUELED!")
     end
     if not isSlot(fuelSlot,"coal") then
         unclog(1,2,maxSlots)
