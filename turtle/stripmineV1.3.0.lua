@@ -28,8 +28,9 @@ end
 function noerror(func)
     return pcall(function()func()end)
 end
+local counter = 1
 while true do
-    os.sleep(1)
+    os.sleep(0.1)
     term.clear()
 
     local fuel = turtle.getFuelLevel()
@@ -48,7 +49,13 @@ while true do
     if not isSlot(fuelSlot,"coal") then
         unclog(1,2,maxSlots)
     end
-    noerror(turtle.dig())
-    noerror(turtle.forward())
-    noerror(turtle.digDown())
+    if counter == 1 then
+        noerror(turtle.dig())
+    elseif counter == 2 then
+        noerror(turtle.forward())
+    elseif counter == 3 then
+        noerror(turtle.digDown())
+        counter = 0
+    end
+    counter = counter + 1
 end
