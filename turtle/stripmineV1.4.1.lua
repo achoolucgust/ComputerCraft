@@ -28,7 +28,7 @@ function noerror(func)
 end
 local counter = 1
 while true do
-    --os.sleep(0.1)
+    os.sleep(0.1)
     term.clear()
 
     local fuel = turtle.getFuelLevel()
