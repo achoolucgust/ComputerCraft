@@ -28,7 +28,6 @@ function noerror(func)
 end
 local counter = 1
 while true do
-    os.sleep(0.1)
     term.clear()
 
     local fuel = turtle.getFuelLevel()
@@ -43,6 +42,7 @@ while true do
         refuel(1,16)
         print("REFUELED!")
     end
+    print()
     if counter == 1 then
         noerror(turtle.dig())
     elseif counter == 2 then
@@ -56,8 +56,10 @@ while true do
     elseif counter == 6 then
         noerror(turtle.turnRight())
     elseif counter == 7 then
+        noerror(turtle.turnRight())
+    elseif counter == 8 then
         noerror(turtle.dig())
-    elseif counter == 7 then
+    elseif counter == 9 then
         noerror(turtle.turnLeft())
         counter = 0
     end
